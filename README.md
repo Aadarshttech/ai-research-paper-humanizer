@@ -1,6 +1,5 @@
 # AI Research Paper Humanizer ✍️🤖 ➡️ 🧑‍🔬
 
-[![GitHub stars](https://img.shields.io/github/stars/Aadarshttech/ai-research-paper-humanizer.svg?style=social&label=Star)](https://github.com/Aadarshttech/ai-research-paper-humanizer) 
 
 **The ultimate system prompt and skill for Cursor, Claude Code, and Antigravity to write and review research papers like a human.**
 
