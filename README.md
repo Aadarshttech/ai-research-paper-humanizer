@@ -1,9 +1,8 @@
-# AI Research Paper Humanizer ✍️🤖 ➡️ 🧑‍🔬
+# AI Research Paper Humanizer
 
+> A comprehensive system prompt and configuration designed to enforce natural, sequential, and human-readable academic writing across AI assistants (Cursor, Claude Code, Antigravity).
 
-**The ultimate system prompt and skill for Cursor, Claude Code, and Antigravity to write and review research papers like a human.**
-
-Are you tired of AI writing academic papers packed with dense, undefined terminology that only machines can understand? This repository contains a professional-grade prompt/skill (`SKILL.md` / `.cursorrules`) that forces LLMs to write sequential, easily readable, and humanized research papers.
+Modern AI models default to generating dense, jargon-heavy academic text that prioritizes machine efficiency over sequential storytelling. This repository provides a professional-grade ruleset (`SKILL.md` / `.cursorrules`) that forces LLMs to introduce concepts progressively, define terminology before use, and eliminate predictable AI cadence. The result is research papers written for human comprehension rather than machine parsing.
 
 ## 🚀 Why This Matters (The Problem)
 
