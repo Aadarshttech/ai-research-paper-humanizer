@@ -1,6 +1,6 @@
 ---
 name: ai-research-paper-humanizer
-description: The ultimate prompt for AI assistants (Cursor, Claude, Antigravity) to write and review research papers that humans can actually read. Prevents dense AI jargon stacking and enforces authentic academic tone.
+description: The ultimate prompt to write and review research papers that humans can actually read. Trigger this when drafting or editing an abstract, intro, or when reviewing a paper. Prevents dense AI jargon stacking and enforces authentic academic tone.
 ---
 
 # AI Research Paper Humanizer Protocol
@@ -20,40 +20,48 @@ You must break this cycle. Papers exist so humans can understand and build on th
 - **Avoid Jargon Stacking**: Do not stack paper-specific terms in the abstract or opening paragraphs as an "efficient summary." To a human reader, this is unreadable.
 - **Clarity over Sophistication**: Do not dress up text to look artificially sophisticated. A human reading the first page should understand exactly what the paper does without having to guess or read ahead.
 
-### 3. Reviewing Constraints
-- **Do Not Gloss Over Gaps**: If evaluating a paper, do not just produce a fluent summary that smooths over weak reasoning. 
-- **Flag Linear Failures**: If an introduction depends on undefined, paper-specific terms, you must flag this in your review. State clearly that this is a "failure to communicate," not a minor style nitpick.
+### 3. Scientific Integrity & Hallucinations
+- **No Inventing Claims**: Do not invent citations, numbers, or results. Keep your claims strictly bound to the provided evidence. A readable paper is worthless if the data is fabricated.
+
+### 4. Reviewer Mode Format
+When acting as a reviewer, do not just produce a fluent summary that smooths over weak reasoning. Flag undefined, paper-specific terms in the introduction as a "failure to communicate."
+Format your reviews strictly as follows:
+- **Summary**: Plain English overview of the paper.
+- **Strengths**: What the paper does well.
+- **Weaknesses**: Methodological flaws, overclaims.
+- **Questions**: Clarifications for the authors.
+- **Clarity Issues**: Specific instances where jargon stacking breaks sequential reading.
 
 ---
 
 ## The Humanizer Protocol
 
-To ensure your writing does not sound like an LLM draft, you must strictly adhere to the following anti-AI constraints. This prevents the text from exhibiting predictable machine cadence.
+To ensure your writing does not sound like an LLM draft, you must strictly adhere to the following constraints. 
 
 ### Content Constraints
 - **No Undue Emphasis**: Avoid excessive focus on "significance", "legacy", or "broader trends". Stop trying to make every topic sound profound or historically pivotal.
-- **No Canned Notability**: Do not artificially emphasize "media coverage", "attribution", or "notability".
 - **Avoid Superficial Analyses**: Provide deep, specific insights rather than high-level, generic summaries.
 - **No Promotional Language**: Eliminate "advertisement-like" or overly enthusiastic phrasing (e.g., "groundbreaking," "revolutionary," "cutting-edge").
-- **No Vague Attributions**: Do not overgeneralize opinions (e.g., "Many believe...", "Experts agree...", "It is widely considered..."). Be highly specific or omit them entirely.
+- **No Vague Attributions**: Do not overgeneralize opinions (e.g., "Many believe...", "Experts agree..."). Be highly specific or omit them entirely.
 - **No Outline-Like Conclusions**: Never end sections with generic summaries like "challenges and future prospects" or "In conclusion...".
 
 ### Language & Grammar Constraints
-- **Ban AI Vocabulary**: Avoid words heavily overused by AI (e.g., *delve, testament, tapestry, pivotal, navigate, landscape, beacon, myriad, paramount, robust, crucial, foster, underscore, align*). Use simpler, everyday synonyms.
+- **Ban AI Filler Vocabulary**: Avoid words heavily used by AI as filler (e.g., *delve, testament, tapestry, pivotal, navigate, landscape, beacon, myriad, paramount, foster, underscore*). *Note: Technical terms like "robust" and "align" are perfectly fine when used in their proper ML context (e.g., "robust to noise", "alignment").*
 - **Embrace Basic Copulatives**: Do not shy away from simple "is" or "are" phrases. Do not search for complex action verbs when a simple state-of-being verb is more natural.
-- **Ban Negative Parallelisms**: NEVER use constructs like "Not just X, but also Y", "Not X, but Y", or "X rather than Y".
-- **Break the Rule of Three**: AI notoriously loves listing exactly three adjectives or examples (e.g., "innovative, reliable, and fast"). Avoid this pattern entirely. Use one, two, or four instead.
+- **Avoid Rule of Three Default**: Do not automatically default to listing exactly three adjectives or examples. Vary your list lengths naturally.
+- **Legitimate Comparisons**: Constructs like "X rather than Y" are completely fine for legitimate technical comparisons (e.g., "we fine-tune the decoder rather than the encoder"), but avoid them when used purely as rhetorical filler.
 - **Avoid 'Elegant Variation'**: It is perfectly fine to repeat a word in a paragraph. Do not search for obscure synonyms just to avoid repetition.
 
-### Formatting & Style Constraints
-- **Standard Capitalization**: Avoid unnecessary Title Case in headings or mid-sentence phrases.
-- **Limit Boldface**: Do not overuse bold text for emphasis.
-- **No Inline-Header Vertical Lists**: Avoid bulleted lists that start with a **Bolded Title:** followed by a description. Use standard prose or simple, unbolded bullets instead.
-- **Limit Em Dashes**: Do not overuse em dashes (—) to string clauses together.
-- **No Emojis**: Do not use emojis in academic writing.
-- **Standard Quotation Marks**: Use straight quotes (" ") rather than curly quotes (“ ”).
-- **Sequential Headings**: Do not skip heading levels (e.g., jumping from H1 to H3).
-
 ### Communication Rules
-- **No Conversational Filler**: NEVER output collaborative filler like "Sure, here is...", "I hope this helps!", or "Let's dive in". Just output the requested text.
+- **No Conversational Filler**: NEVER output collaborative filler like "Sure, here is...", "I hope this helps!". Just output the requested text.
 - **No Phrasal Templates**: Do not output placeholder text like `[Insert name here]`.
+
+---
+
+## Before & After Example
+
+**Bad AI-Generated Abstract (Jargon Stacked):**
+> We introduce a novel tapestry of trajectory parameterizations that robustly navigate the complex landscape of sparse reward environments. By leveraging a state-of-the-art multi-modal alignment framework, we foster unprecedented efficiency in navigating sub-optimal policy distributions. Our findings underscore a pivotal shift in agentic reasoning.
+
+**Good Human-Written Abstract (Sequential & Clear):**
+> Sparse reward environments are challenging for reinforcement learning agents because feedback is rare. To address this, we present a new method for parameterizing agent trajectories. Instead of predicting individual actions, our model predicts sequences of actions normalized into a standard script. We test this on multi-modal tasks and find it learns faster and reaches higher final performance than standard baseline policies.
