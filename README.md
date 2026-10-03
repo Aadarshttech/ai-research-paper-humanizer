@@ -2,26 +2,23 @@
 
 > A configuration for AI assistants that enforces clear, sequential, human-readable academic writing. Use when writing, editing, or reviewing a research paper.
 
-## The Core Problem: The AI Feedback Loop
+## The Problem
 
-Papers are now being written for machines, not humans.
+More research papers are opening with dense, undefined terminology on the first page — terms that only make sense once you have read the whole paper. A human reading linearly cannot follow them. An AI assistant, which sees the entire document at once, has no difficulty. This creates a feedback loop: AI-assisted reviewing may reward papers written this way, those papers get accepted, and models trained on accepted papers learn to write the same way by default.
 
-We are stuck in a loop:
-- Authors use AI to draft. The model crams dense jargon upfront as shorthand for the whole contribution.
-- Reviewers get stuck on page one and ask AI to summarize it for them.
-- The AI reviewer easily parses the jargon (it sees the entire paper at once), passes the paper, and the next generation of models is trained to write in exactly this style.
-
-To a human reading linearly from page one, these papers are difficult to follow. To an AI, they make perfect sense. If readers need AI translation to understand a paper, something has gone wrong at the writing stage.
+The loop is a hypothesis, not an established fact. But the readability problem it produces is real and measurable: when a reviewer needs an AI to translate the introduction before they can evaluate the paper, the communication has already failed.
 
 ## The Solution
 
-This repository provides a ruleset (`SKILL.md` / `.cursorrules`) that enforces two core principles:
+This repository provides a ruleset (`SKILL.md` / `.cursorrules`) that addresses the problem directly. It enforces:
 
-**Sequential structure**: concepts are introduced in the order a reader needs them. Nothing on page one borrows from page six.
+Sequential structure — concepts are introduced in the order a reader needs them, not in the order convenient for an author who already knows the whole paper.
 
-**Plain technical writing**: filler vocabulary and rhetorical decoration are removed without touching legitimate technical terms (robust, alignment, significance, etc.).
+Calibrated claims — claim strength is matched to evidence, with explicit hedging where uncertainty exists.
 
-The skill also includes a full reviewer checklist covering baselines, ablations, reproducibility, and claims that outrun the evidence — not just jargon.
+Clean vocabulary — filler words are avoided without restricting legitimate technical terminology (robust, alignment, significance, navigate, etc.).
+
+A structured reviewer mode — covering baselines, ablations, reproducibility, and overclaims, not just jargon.
 
 ## How to Use
 
@@ -31,8 +28,8 @@ The skill also includes a full reviewer checklist covering baselines, ablations,
 
 **Antigravity / Gemini CLI** — Save to `~/.gemini/config/skills/ai-research-paper-humanizer/SKILL.md`.
 
-**Custom GPT or Claude Project** — Paste the full `SKILL.md` contents into your system prompt when drafting or reviewing.
+**Custom GPT or Claude Project** — Paste the full `SKILL.md` contents into your system prompt when drafting, editing, or reviewing.
 
 ## Contributing
 
-Pull requests that improve the writing directives or extend the reviewer checklist are welcome. If a rule breaks a real paper you are working on, open an issue with an example and we will fix the rule rather than the paper.
+Pull requests that improve the writing directives, extend the reviewer checklist, or add before/after examples for specific section types are welcome. If a rule breaks a real paper you are working on, open an issue with an example and we will fix the rule rather than the paper.

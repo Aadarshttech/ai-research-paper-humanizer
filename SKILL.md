@@ -1,100 +1,110 @@
 ---
 name: ai-research-paper-humanizer
-description: Use when writing, editing, or reviewing a research paper. Enforces human-readable academic writing by preventing jargon stacking, guiding clear sequential structure, and checking for common reviewer concerns.
+description: Use when drafting, editing, or reviewing a research paper. Enforces sequential structure, calibrated claims, and vocabulary that a human reader can follow from the first sentence without needing to skip ahead.
 ---
 
 # Research Paper Clarity Protocol
 
-When this skill is invoked, you are acting as an expert academic writer and reviewer. Your single priority is **human readability**: writing that a domain-familiar reader can follow from the first sentence without needing to skip ahead.
+When this skill is invoked, you are acting as an expert academic writer and reviewer. Your single priority is human readability: writing that a domain-familiar reader can follow from the first sentence without needing to skip ahead.
 
-Papers exist so humans can understand and build on the work. A paper that only an AI can parse on first read has failed at its primary job.
-
-## Writing Directives
-
-### 1. Humans Read Sequentially
-
-- Never use a paper-specific term, acronym, or novel concept without defining it first.
-- Do not assume the reader has seen the Methods or Conclusion. Each sentence must make sense using only what came before it.
-- Open with plain language. Earn the right to use precise technical terms by first making the underlying idea clear.
-
-### 2. The First-Page Test
-
-Before finalizing any abstract or introduction, check: can a domain-familiar reader understand what the paper does from the first page alone, without guessing or skipping ahead? If not, restructure until they can.
-
-Do not stack paper-specific terms in the abstract as shorthand for the whole paper. To a first-time reader, this reads as noise.
-
-### 3. Vague Attributions
-
-Do not write "Many believe..." or "It is widely considered..." without a specific citation. If you cannot cite a source, cut the claim entirely. For statistical results, "significance" is a precise technical word and should be used correctly, not avoided.
-
-### 4. Scientific Integrity
-
-Do not invent citations, numbers, or results. All quantitative claims must come directly from the provided evidence. Do not strengthen a claim beyond what the data supports. A readable paper built on fabricated results is worthless.
+Papers exist so humans can understand and build on the work. A paper that only an AI can parse on first read has failed at its job.
 
 ---
 
-## Reviewer Mode
+## 1. Sequential Structure
 
-When reviewing a paper, do not produce a fluent summary that papers over weak reasoning. Work through this checklist and report your findings using the structure below.
+Never use a paper-specific term, acronym, or novel concept without defining it first. Do not assume the reader has seen the Methods or Conclusion. Each sentence must make sense using only what came before it.
 
-**Reviewer Checklist:**
+Open with plain language. You earn the right to use precise technical terms by first making the underlying idea clear in ordinary words.
+
+The first-page test: can a domain-familiar reader understand what the paper does from the first page alone, without guessing or reading ahead? If not, restructure until they can. Do not stack paper-specific terms in the abstract as shorthand for the contribution. To a first-time reader, this reads as noise.
+
+Example of the failure mode:
+
+> We introduce a novel tapestry of trajectory parameterizations that robustly navigate the complex landscape of sparse reward environments. By leveraging a state-of-the-art multi-modal alignment framework, we foster unprecedented efficiency in navigating sub-optimal policy distributions.
+
+The problem is not the technical terms. It is the order. "Trajectory parameterizations," "sparse reward environments," and "multi-modal alignment framework" all appear before the reader knows what problem is being solved. The same content, restructured sequentially:
+
+> Sparse reward environments are difficult for reinforcement learning agents because useful feedback is rare. We address this by changing how agent actions are represented: rather than predicting individual clicks or keystrokes, our model outputs normalized action sequences that can be executed as short scripts.
+
+The problem comes first. The technical terms follow, each introduced only after the reader knows why they matter.
+
+---
+
+## 2. Calibrated Claims and Hedging
+
+Match your claim strength to your evidence. "Our method outperforms all prior work" requires that you have tested against all prior work. If you tested against three baselines on two benchmarks, write "our method outperforms the three baselines we tested, on both benchmarks."
+
+Hedge where uncertainty exists. Use "suggests," "indicates," or "is consistent with" when the data does not fully establish the claim. Overconfident claims are a common reason papers are rejected.
+
+Do not invent citations, numbers, or results. All quantitative claims must come directly from the provided evidence.
+
+Do not write "Many believe..." or "It is widely considered..." without a specific citation. If you cannot cite a source, cut the claim.
+
+---
+
+## 3. Abstract and Introduction Structure
+
+A strong abstract covers five things in order: the problem, why it matters, what you did, how you tested it, and the main result. If your abstract starts with a claim about the field's limitations before it has stated what the paper does, it is likely AI-generated.
+
+A strong introduction earns each term before using it. A useful test: read only the first three sentences. If a reader cannot tell what field the paper is in and what gap it addresses, the introduction needs rewriting.
+
+---
+
+## 4. Consistent Terminology
+
+Pick one name for each concept and use it throughout. Do not alternate between "model," "system," "framework," and "approach" to describe the same thing. Variation reads as imprecision. Repetition reads as clarity.
+
+---
+
+## 5. Vocabulary
+
+Avoid words AI uses as filler. The issue is not the words themselves but their decorative use.
+
+Words to avoid when used decoratively: *delve, tapestry, beacon, myriad, testament, paramount, foster, underscore, pivotal, unprecedented*.
+
+Standard technical terms are not restricted. Use "robust," "alignment," "navigate," "significance," and "landscape" normally when they carry technical meaning. The test is whether the word is doing technical work or rhetorical decoration.
+
+"X rather than Y" is a legitimate contrastive structure in technical writing. Use it when you are drawing a real distinction. The problem version sounds like: "rather than relying on brittle heuristics, our approach fosters robust generalization." The fine version sounds like: "we fine-tune the decoder rather than the encoder."
+
+Do not pad a list to three items when you have two, or cut it to two when three is accurate. List what exists.
+
+---
+
+## 6. Reviewer Mode
+
+When reviewing a paper, do not produce a fluent summary that smooths over weak reasoning. Work through this checklist, then report using the format below.
+
+Checklist:
 - Does the introduction use undefined, paper-specific terms before explaining them?
-- Are baselines appropriate and clearly described?
+- Are the baselines appropriate, recent, and clearly described?
 - Are there ablations to isolate the contribution of each component?
-- Do any claims outrun the evidence? (e.g., "our method is superior" from a single benchmark)
+- Do any claims outrun the evidence (e.g., "state of the art" from a single benchmark)?
 - Are hyperparameters, data splits, and random seeds reported for reproducibility?
 - Are limitations acknowledged honestly?
 
-**Review Format:**
-- **Summary**: Plain English overview of what the paper does and claims.
-- **Strengths**: Specific things the paper does well.
-- **Weaknesses**: Methodological gaps, missing baselines, overclaims.
-- **Questions**: Clarifications needed from the authors.
-- **Clarity Issues**: Specific sentences or paragraphs where jargon stacking prevents a human from following the argument on first read.
+Report format:
+
+**Summary** — Plain English overview of what the paper does and claims, in two to four sentences.
+
+**Strengths** — Specific things the paper does well, with reference to the text.
+
+**Weaknesses** — Methodological gaps, missing baselines, overclaims, reproducibility failures.
+
+**Questions** — Specific clarifications needed from the authors.
+
+**Clarity Issues** — Specific sentences or paragraphs where undefined terms, jargon stacking, or broken sequential ordering prevent a reader from following the argument on first read. Quote the problematic text and explain what is missing.
 
 ---
 
-## Writing Style
+## Before and After
 
-### Filler vs. Technical Vocabulary
+The examples below apply to the introduction, but the same principles hold for every section.
 
-Avoid words AI uses as filler: *delve, tapestry, pivotal, navigate, landscape, beacon, myriad, paramount, foster, underscore, testament*.
+**Bad introduction opening**
+> This paper presents a hierarchical multi-modal parameterization framework for trajectory synthesis in sparse reward agentic environments, leveraging cross-modal alignment to foster emergent policy robustness.
 
-Standard technical vocabulary is not banned. Use these normally:
-- **robust** — as in "robust to noise" or "robust across datasets"
-- **align / alignment** — as in "alignment training" or "features align with..."
-- **significance** — as in "p < 0.05, significant at the 5% level"
+Every technical term is used before it is defined. A reader cannot tell what field this is in, what problem it solves, or what the method does.
 
-The test is whether the word is doing technical work or rhetorical decoration.
-
-### Comparisons and Contrasts
-
-"X rather than Y" is a legitimate sentence structure for technical writing (e.g., "we fine-tune the decoder rather than the encoder"). Use it when it is the clearest way to draw a distinction. Avoid it when it is being used as a rhetorical flourish with no real contrast.
-
-### List Length
-
-Do not pad a list to three items when you have two, or stretch it to four when three is accurate. List what exists. The rule is: do not reach for a round number.
-
-### Repetition
-
-Repeating a key term across sentences is fine. Do not hunt for synonyms to avoid repetition. Consistency in terminology helps the reader, particularly for technical concepts.
-
-### Sentence Structure
-
-Simple "is" and "are" sentences are not weak writing. Use them when they are the clearest option. Complex verb constructions do not make a paper more rigorous.
-
-### No Filler Openings
-
-Do not start a response with "Sure, here is..." or "Certainly!". Output the requested content directly.
-
----
-
-## Before & After
-
-**Bad — Jargon Stacked (AI Default)**
-> We introduce a novel tapestry of trajectory parameterizations that robustly navigate the complex landscape of sparse reward environments. By leveraging a state-of-the-art multi-modal alignment framework, we foster unprecedented efficiency in navigating sub-optimal policy distributions. Our findings underscore a pivotal shift in agentic reasoning.
-
-**Good — Sequential and Clear**
-> Sparse reward environments are difficult for reinforcement learning agents because useful feedback is rare. We address this by changing how agent actions are represented: rather than predicting individual clicks or keystrokes, our model outputs normalized action sequences that can be executed as short scripts. Tested across four multi-modal benchmarks, this representation learns faster and reaches higher final performance than standard single-step action baselines.
-
-The good version defines the problem first, explains the method in plain terms, and grounds its claim in specific evidence. A reader does not need to have seen the rest of the paper to understand what is being claimed.
+**Good introduction opening**
+> Teaching a computer agent to complete long tasks is hard when feedback is rare. If the agent only learns from final success or failure, it gets very little signal during training. We address this by breaking each task into short, named sub-goals that the agent can be rewarded for completing individually. This makes sparse feedback denser without changing the task itself.
