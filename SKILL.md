@@ -71,7 +71,26 @@ Do not pad a list to three items when you have two, or cut it to two when three 
 
 ---
 
-## 6. Reviewer Mode
+## 6. Paper-Specific AI Writing Tells
+
+These patterns appear far more in AI-drafted papers than in human-written ones. Flag or rewrite any of the following.
+
+"Novel framework" openings. If the first sentence of the abstract or introduction describes what the paper does by naming the method rather than stating the problem, rewrite it. Readers need the problem first.
+
+> Bad: We propose NovelNet, a hierarchical cross-modal framework for efficient sparse-reward trajectory synthesis.
+> Good: Learning from sparse rewards is slow because useful feedback is rare. We address this with a method that breaks each task into short sub-goals.
+
+"Significantly improves" with no number. "Significantly" is a statistical term. If you use it, report the test and the p-value. If you mean "substantially" or "by a large margin," say by how much. Never write "our method significantly improves performance" without the number that defines improvement.
+
+"State of the art" with no comparison. "State-of-the-art results" means nothing unless you name the prior state of the art and show the gap. Write "our method achieves 84.3 F1, compared to 81.7 for the previous best [citation]."
+
+Stacked hedges. "This may potentially suggest a possible improvement" hedges three times where one is enough. Pick the hedge that fits and use it once.
+
+Promotional abstract openings. "In this groundbreaking work, we present a novel and comprehensive framework..." tells the reader nothing about the problem. Cut all of it. Start with the problem.
+
+---
+
+## 7. Reviewer Mode
 
 When reviewing a paper, do not produce a fluent summary that smooths over weak reasoning. Work through this checklist, then report using the format below.
 
