@@ -1,37 +1,38 @@
 # AI Research Paper Humanizer
 
-> A comprehensive system prompt and configuration designed to enforce natural, sequential, and human-readable academic writing across AI assistants (Cursor, Claude Code, Antigravity).
+> A configuration for AI assistants that enforces clear, sequential, human-readable academic writing. Use when writing, editing, or reviewing a research paper.
 
-## 🚀 The Core Problem: The AI Feedback Loop
+## The Core Problem: The AI Feedback Loop
 
-**Papers are now being written for machines, not humans.** 
+Papers are now being written for machines, not humans.
 
-We are stuck in an optimization loop:
-1. **Authors** use AI to draft, which crams dense jargon upfront as an "efficient summary."
-2. **Reviewers** get stuck on page one, so they use AI to read and assess it.
-3. **The AI Reviewer** easily parses the jargon (because it sees the whole context window at once), passes the paper, and new models are trained to write in this exact unreadable style.
+We are stuck in a loop:
+- Authors use AI to draft. The model crams dense jargon upfront as shorthand for the whole contribution.
+- Reviewers get stuck on page one and ask AI to summarize it for them.
+- The AI reviewer easily parses the jargon (it sees the entire paper at once), passes the paper, and the next generation of models is trained to write in exactly this style.
 
-To a human reading linearly from page one, these papers are unreadable. To an AI, they make perfect sense. If readers need an AI to translate every paper, we've outsourced understanding itself. 
+To a human reading linearly from page one, these papers are difficult to follow. To an AI, they make perfect sense. If readers need AI translation to understand a paper, something has gone wrong at the writing stage.
 
-## 💡 The Solution
+## The Solution
 
-This repository provides a professional-grade ruleset (`SKILL.md` / `.cursorrules`) that fixes the problem by enforcing two core rules:
-1. **Humans Read in Order**: The AI must earn the right to use complex jargon by explaining foundational concepts in plain language first. No more context borrowing from page six on page one.
-2. **The Humanizer Protocol**: Strips away predictable AI cadence (e.g., filler words like *delve, testament, tapestry, pivotal*) and forces a natural, authentic academic tone without breaking legitimate technical ML vocabulary (like *robust* or *alignment*).
+This repository provides a ruleset (`SKILL.md` / `.cursorrules`) that enforces two core principles:
 
-## ⚙️ How to Use
+**Sequential structure**: concepts are introduced in the order a reader needs them. Nothing on page one borrows from page six.
 
-### For Cursor Users
-Copy the contents of `SKILL.md` into your `.cursorrules` file at the root of your research paper repository.
+**Plain technical writing**: filler vocabulary and rhetorical decoration are removed without touching legitimate technical terms (robust, alignment, significance, etc.).
 
-### For Claude Code Users
-Save `SKILL.md` into your local skills directory (e.g., `~/.claude/skills/ai-research-paper-humanizer/SKILL.md`).
+The skill also includes a full reviewer checklist covering baselines, ablations, reproducibility, and claims that outrun the evidence — not just jargon.
 
-### For Antigravity Users
-Save `SKILL.md` into your global config directory (e.g., `~/.gemini/config/skills/ai-research-paper-humanizer/SKILL.md`).
+## How to Use
 
-### As a Custom GPT / Claude Project Prompt
-Simply paste the entire `SKILL.md` content into your system instructions when drafting, editing, or reviewing a paper.
+**Cursor** — Copy `SKILL.md` into `.cursorrules` at the root of your repository.
 
-## 🤝 Contributing
-Read your paper as a stranger would. If an AI has to guess what your first page means, a human can't understand it either. Pull requests to improve the humanizer constraints are welcome!
+**Claude Code** — Save to `~/.claude/skills/ai-research-paper-humanizer/SKILL.md`.
+
+**Antigravity / Gemini CLI** — Save to `~/.gemini/config/skills/ai-research-paper-humanizer/SKILL.md`.
+
+**Custom GPT or Claude Project** — Paste the full `SKILL.md` contents into your system prompt when drafting or reviewing.
+
+## Contributing
+
+Pull requests that improve the writing directives or extend the reviewer checklist are welcome. If a rule breaks a real paper you are working on, open an issue with an example and we will fix the rule rather than the paper.
